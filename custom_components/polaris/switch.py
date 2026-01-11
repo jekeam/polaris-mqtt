@@ -31,6 +31,7 @@ from .const import (
     SWITCH_HUMIDIFIER_IONISER,
     SWITCH_HUMIDIFIER_WARM_STREAM,
     SWITCH_HUMIDIFIER_ULTRAVIOLET,
+    SWITCH_HUMIDIFIER_ULTRAVIOLET_158,
     SWITCHES_RUSCLIMATE_HUMIDIFIER,
     SWITCHES_COOKER,
     SWITCHES_COFFEEMAKER,
@@ -198,6 +199,23 @@ async def async_setup_entry(
     if (device_type in {"835","157"}):
         # Create switch stream warm for humidifiers
         SWITCH_HUMIDIFIER_ULTRAVIOLET_LC = copy.deepcopy(SWITCH_HUMIDIFIER_ULTRAVIOLET)
+        for description in SWITCH_HUMIDIFIER_ULTRAVIOLET_LC:
+            description.mqttTopicCommand = f"{mqtt_root}/{device_prefix_topic}/{description.mqttTopicCommand}"
+            description.mqttTopicCurrentValue = f"{mqtt_root}/{device_prefix_topic}/{description.mqttTopicCurrentValue}"
+            description.device_prefix_topic = device_prefix_topic
+            switchList.append(
+                PolarisSwitch(
+                    description=description,
+                    device_friendly_name=device_id,
+                    mqtt_root=mqtt_root,
+                    device_type=device_type,
+                    device_id=device_id
+                )
+            )
+
+    if (device_type in {"158"}):
+        # Create switch stream warm for humidifiers
+        SWITCH_HUMIDIFIER_ULTRAVIOLET_LC = copy.deepcopy(SWITCH_HUMIDIFIER_ULTRAVIOLET_158)
         for description in SWITCH_HUMIDIFIER_ULTRAVIOLET_LC:
             description.mqttTopicCommand = f"{mqtt_root}/{device_prefix_topic}/{description.mqttTopicCommand}"
             description.mqttTopicCurrentValue = f"{mqtt_root}/{device_prefix_topic}/{description.mqttTopicCurrentValue}"

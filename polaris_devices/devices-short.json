@@ -27847,16 +27847,16 @@
     "type": 158,
     "class": "humidifier",
     "image": {
-      "60": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/60.webp",
-      "120": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/120.webp",
-      "240": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/240.webp",
-      "480": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/480.webp",
-      "600": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/600.webp",
-      "900": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/900.webp",
-      "1200": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/1200.webp",
-      "1800": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/1800.webp",
+      "60": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/60.webp",
+      "120": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/120.webp",
+      "240": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/240.webp",
+      "480": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/480.webp",
+      "600": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/600.webp",
+      "900": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/900.webp",
+      "1200": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/1200.webp",
+      "1800": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/1800.webp",
       "id": "91b9e878-5b9e-4ec4-b464-2451912609f8",
-      "original": "https://images.cdn.polaris-iot.com/9/1b/9e878-5b9e-4ec4-b464-2451912609f8/original.webp"
+      "original": "https://images.cdn.polaris-iot.com/7/6f/07d82-8dea-42eb-b092-ae7a1bec1a22/original.webp"
     },
     "params": {
       "voice": {

@@ -402,6 +402,7 @@ POLARIS_KETTLE_WITH_BACKLIGHT_TYPE = ["36","37","51","52","53","54","60","61","6
 POLARIS_KETTLE_WITH_TEA_TIME_MODE_TYPE = ["2","8","51","53","56","58","60","62","85","98","139","165","185","188","205","223","262","263","275","294"]
 POLARIS_KETTLE_WITH_KEEP_WITH_WARM_MODE_TYPE = ["205","262","294"]
 POLARIS_HUMIDDIFIER_TYPE = ["4","15","17","18","25","44","70","71","72","73","74","75","87","99","137","147","153","155","157","158","835","881"]
+POLARIS_HUMIDDIFIER_WITH_BACKLIGHT_TYPE = ["158"]
 POLARIS_HUMIDDIFIER_WITH_IONISER_TYPE = ["4","15","17","18","44","70","72","73","74","137","147","153","155","157","158","835"]
 POLARIS_HUMIDDIFIER_WITH_WARM_STREAM_TYPE = ["4","15","17","18","44","70","72","74","147","157","158","835","881"]
 POLARIS_HUMIDDIFIER_LOW_FAN_TYPE = ["25","71","72","73","74","75","87","99","137","153","155","157","158"]
@@ -1433,6 +1434,21 @@ SWITCH_HUMIDIFIER_ULTRAVIOLET = [
         name="Ultraviolet",
         mqttTopicCommand="control/uv",
         mqttTopicCurrentValue="state/uv",
+        device_class=SwitchDeviceClass.SWITCH,
+        payload_on="true",
+        payload_off="false",
+        icon="mdi:white-balance-sunny",
+    ),
+]
+
+SWITCH_HUMIDIFIER_ULTRAVIOLET_158 = [
+    PolarisSwitchEntityDescription(
+        key="ultraviolet",
+        translation_key="ultraviolet_switch",
+        entity_category=EntityCategory.CONFIG,
+        name="Ultraviolet",
+        mqttTopicCommand="control/turbo",
+        mqttTopicCurrentValue="state/turbo",
         device_class=SwitchDeviceClass.SWITCH,
         payload_on="true",
         payload_off="false",
