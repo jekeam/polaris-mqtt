@@ -458,7 +458,7 @@ HUMIDDIFIER_ERROR = {
 "02": "child_lock",
 "03": "replace_filter",
 "04": "maximum_schedules",
-"05": "clean_tank"
+"05": "clean_tank",
 }
 COOKER_ERROR = {
 "00": "no_error",

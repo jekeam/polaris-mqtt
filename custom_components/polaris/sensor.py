@@ -465,6 +465,8 @@ class PolarisSensor(PolarisBaseEntity, SensorEntity):
                     payload_message = KETTLE_ERROR[payload_message]
                 if POLARIS_DEVICE[int(self.device_type)]['class'] == "humidifier":
                     payload_message = HUMIDDIFIER_ERROR[payload_message]
+                    if not payload_message:
+                        payload_message = HUMIDDIFIER_ERROR.get(payload_message)
                 if POLARIS_DEVICE[int(self.device_type)]['class'] == "coffeemaker":
                     payload_message = COFFEEMAKER_ERROR[payload_message]
                 if POLARIS_DEVICE[int(self.device_type)]['class'] == "air_cleaner":
