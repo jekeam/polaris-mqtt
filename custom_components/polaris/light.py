@@ -191,7 +191,8 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
             color_idx = 1
             if ATTR_RGB_COLOR in kwargs:
                 rgb = kwargs[ATTR_RGB_COLOR]
-                if rgb[2] > 200 and rgb[0] < 150: color_idx = 2
+                if sum(rgb) < 10: color_idx = 0
+                elif rgb[2] > 200 and rgb[0] < 150: color_idx = 2
                 elif rgb[1] > 200 and rgb[0] < 150: color_idx = 3
                 elif rgb[0] > 200 and rgb[1] > 100 and rgb[2] < 100: color_idx = 4
                 else: color_idx = 1
