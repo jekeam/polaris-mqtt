@@ -192,7 +192,7 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
             if ATTR_RGB_COLOR in kwargs:
                 rgb = kwargs[ATTR_RGB_COLOR]
                 # Если выбрать красный то вывключит подсветку, т.к. яркость не передается
-                if rgb[0] > 200 and rgb[1] < 50 and rgb[2] < 50:
+                if (rgb[0] > 200 and rgb[1] < 50 and rgb[2] < 50) or sum(rgb) <= 10:
                     color_idx = 0
                 elif rgb[2] > 200 and rgb[0] < 150:
                     color_idx = 2
