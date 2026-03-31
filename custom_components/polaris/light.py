@@ -187,17 +187,19 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
         topic_color = self.entity_description.mqttTopicCommandColor
         topic_state = self.entity_description.mqttTopicCommandState
 
-        if ATTR_BRIGHTNESS in kwargs:
-            self._attr_brightness = int((kwargs[ATTR_BRIGHTNESS] * 100) / 255)
-
         if self.device_type in POLARIS_HUMIDDIFIER_WITH_BACKLIGHT_TYPE:
             color_idx = 1
             if ATTR_RGB_COLOR in kwargs:
                 rgb = kwargs[ATTR_RGB_COLOR]
-                if self._attr_brightness <= 10: color_idx = 0
-                elif rgb[2] > 200 and rgb[0] < 150: color_idx = 2
-                elif rgb[1] > 200 and rgb[0] < 150: color_idx = 3
-                elif rgb[0] > 200 and rgb[1] > 100 and rgb[2] < 100: color_idx = 4
+                # Если выбрать красный то вывключит подсветку, т.к. яркость не передается
+                if rgb[0] > 200 and rgb[1] < 50 and rgb[2] < 50:
+                    color_idx = 0
+                elif rgb[2] > 200 and rgb[0] < 150:
+                    color_idx = 2
+                elif rgb[1] > 200 and rgb[0] < 150:
+                    color_idx = 3
+                elif rgb[0] > 200 and rgb[1] > 100 and rgb[2] < 100:
+                    color_idx = 4
                 else: color_idx = 1
             mqtt.publish(self.hass, topic_color, f"{color_idx:02d}")
             mqtt.publish(self.hass, topic_state, "false")
@@ -207,6 +209,8 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
 
         if ATTR_RGB_COLOR in kwargs:
             self._attr_rgb_color = list(kwargs[ATTR_RGB_COLOR])
+        if ATTR_BRIGHTNESS in kwargs:
+            self._attr_brightness = int((kwargs[ATTR_BRIGHTNESS] * 100) / 255)
 
         bright_factor_old = max(self._attr_rgb_color)/255
         bright_factor_new = self._attr_brightness/ 100 / (bright_factor_old if bright_factor_old > 0 else 1)
