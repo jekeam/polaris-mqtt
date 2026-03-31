@@ -187,12 +187,21 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
         topic_color = self.entity_description.mqttTopicCommandColor
         topic_state = self.entity_description.mqttTopicCommandState
 
+
+        if ATTR_RGB_COLOR in kwargs:
+            self._attr_rgb_color = list(kwargs[ATTR_RGB_COLOR])
+        if ATTR_BRIGHTNESS in kwargs:
+            self._attr_brightness = int((kwargs[ATTR_BRIGHTNESS] * 100) / 255)
+
+
         if self.device_type in POLARIS_HUMIDDIFIER_WITH_BACKLIGHT_TYPE:
             color_idx = 1
             if ATTR_RGB_COLOR in kwargs:
                 rgb = kwargs[ATTR_RGB_COLOR]
                 # Если выбрать красный то вывключит подсветку, т.к. яркость не передается
-                if (rgb[0] > 200 and rgb[1] < 50 and rgb[2] < 50) or sum(rgb) <= 10:
+                if (rgb[0] > 200 and rgb[1] < 50 and rgb[2] < 50) \
+                    or sum(rgb) <= 10  \
+                    or (self._attr_brightness is not None and self._attr_brightness <= 50):
                     color_idx = 0
                 elif rgb[2] > 200 and rgb[0] < 150:
                     color_idx = 2
@@ -206,11 +215,6 @@ class PolarisLight(PolarisBaseEntity, LightEntity):
             self._attr_is_on = True
             self.async_write_ha_state()
             return
-
-        if ATTR_RGB_COLOR in kwargs:
-            self._attr_rgb_color = list(kwargs[ATTR_RGB_COLOR])
-        if ATTR_BRIGHTNESS in kwargs:
-            self._attr_brightness = int((kwargs[ATTR_BRIGHTNESS] * 100) / 255)
 
         bright_factor_old = max(self._attr_rgb_color)/255
         bright_factor_new = self._attr_brightness/ 100 / (bright_factor_old if bright_factor_old > 0 else 1)
